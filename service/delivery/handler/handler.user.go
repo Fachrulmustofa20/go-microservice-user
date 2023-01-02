@@ -81,13 +81,11 @@ func (handler Handler) Login(ctx *gin.Context) {
 	password := users.Password
 	token, err := handler.userUsecase.Login(users.Email, password)
 	if err != nil {
-		if err != nil {
-			ctx.JSON(http.StatusUnauthorized, gin.H{
-				"message": "Unauthorized",
-				"error":   err.Error(),
-			})
-			return
-		}
+		ctx.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Unauthorized",
+			"error":   err.Error(),
+		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{
