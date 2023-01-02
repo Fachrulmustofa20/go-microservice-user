@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/Fachrulmustofa20/go-microservice-user/models"
+	"github.com/Fachrulmustofa20/go-microservice-user/service"
 
 	"gorm.io/gorm"
 )
@@ -12,8 +13,8 @@ type usersRepository struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) usersRepository {
-	return usersRepository{
+func NewUserRepository(db *gorm.DB) service.UsersRepository {
+	return &usersRepository{
 		db: db,
 	}
 }
